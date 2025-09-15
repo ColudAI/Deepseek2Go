@@ -1,5 +1,7 @@
 # DeepSeek Go Proxy (Reloaded-Version)
 
+> 本产品由 ColudAi & AmethystCraft-DevTeam 联合开发
+
 目标
 - 用 Go 重写 Python 版代理，显著降低常驻内存与依赖体积
 - 保持与现有 API 行为基本一致：OpenAI 风格 `/v1/chat/completions` 与 Claude 风格 `/anthropic/v1/messages`

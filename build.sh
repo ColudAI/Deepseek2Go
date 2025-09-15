@@ -1,0 +1,1 @@
+mkdir -p dist && go build ./cmd/server -o ./dist/server
