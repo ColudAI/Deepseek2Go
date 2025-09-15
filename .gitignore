@@ -1,3 +1,3 @@
 config.json
+dist/
 go.sum
-server

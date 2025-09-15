@@ -1,0 +1,19 @@
+{
+  "keys": [
+    "1145141919180"
+  ],
+  "accounts": [
+    {
+      "email": "",
+      "mobile": "",
+      "password": "",
+      "token": ""
+    }
+  ],
+  "claude_model_mapping": {
+    "fast": "deepseek-chat",
+    "slow": "deepseek-chat"
+  },
+  "wasm_path": "./module.wasm",
+  "template_dir": "templates"
+}
