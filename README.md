@@ -38,10 +38,12 @@
 
 构建与运行
 1) 安装依赖（已在 go.mod 中声明）
+  ```shell
    go env -w GOPROXY=https://goproxy.cn,direct
    go build ./cmd/server
-
+  ```
 2) 编辑配置 Reloaded-Version/config.json
+  ```json
    {
      "keys": ["YOUR_GATEWAY_KEY"],     // 自定义网关鉴权 key，可选
      "accounts": [
@@ -58,19 +60,25 @@
      "wasm_path": "../sha3_wasm_bg.7b9ca65ddd.wasm",
      "template_dir": "templates"
    }
+   ```
 
 3) 启动
    # 端口默认 5001，如被占用可改用其他端口
    PORT=5051 ./server
 
 4) 健康检查
+  ```shell
    curl -s http://127.0.0.1:5051/
+   ```
 
 5) 列出模型
+  ```shell
    curl -s http://127.0.0.1:5051/v1/models
+   ```
 
 调用示例
 - OpenAI 风格（非流式）
+  ```shell
   curl -sS -X POST "http://127.0.0.1:5051/v1/chat/completions" \
     -H "Authorization: Bearer &lt;DeepSeek Token 或 config.json keys 中的某个值&gt;" \
     -H "Content-Type: application/json" \
@@ -81,8 +89,10 @@
       ],
       "stream": false
     }'
+  ```
 
 - OpenAI 风格（流式）
+  ```shell
   curl -N -sS -X POST "http://127.0.0.1:5051/v1/chat/completions" \
     -H "Authorization: Bearer &lt;DeepSeek Token 或 config.json keys 中的某个值&gt;" \
     -H "Content-Type: application/json" \
@@ -93,8 +103,10 @@
       ],
       "stream": true
     }'
+  ```
 
 - Claude 风格（非流式）
+  ```shell
   curl -sS -X POST "http://127.0.0.1:5051/anthropic/v1/messages" \
     -H "Authorization: Bearer &lt;DeepSeek Token 或 config.json keys 中的某个值&gt;" \
     -H "Content-Type: application/json" \
@@ -105,6 +117,7 @@
       ],
       "stream": false
     }'
+  ```
 
 注意事项
 - 账号登录与 TLS 指纹：Python 版使用 curl_cffi impersonate safari15_3；Go 首版使用标准 http 客户端。某些网络环境下 DeepSeek 登录可能较严格。如果遇到 4xx/5xx，可优先使用自带 DeepSeek Token 调用，或后续接入 CycleTLS 提升兼容性。
